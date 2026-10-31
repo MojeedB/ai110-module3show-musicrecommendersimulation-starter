@@ -2,35 +2,26 @@
 
 ## Project Summary
 
-In this project you will build and explain a small music recommender system.
-
-Your goal is to:
-
-- Represent songs and a user "taste profile" as data
-- Design a scoring rule that turns that data into recommendations
-- Evaluate what your system gets right and wrong
-- Reflect on how this mirrors real world AI recommenders
-
-Replace this paragraph with your own summary of what your version does.
+This recommender is a content-based system that reads a catalog of 20 songs from a CSV file and compares each song's attributes to a user's stated preferences. The user profile can include a favorite genre and mood plus target values for energy, tempo, danceability, and acousticness. Each song gets a score between 0 and 1, built from a weighted sum in which mood counts most, genre counts less, and numeric features earn more points the closer they are to the target. Related moods and genres, like chill and relaxed or pop and indie pop, earn partial credit instead of a flat zero, and any field the user leaves out is skipped so partial profiles still work. The top three or five songs are returned, highest score first, with a plain-language reason for each feature so the user can see why a song ranked where it did.
 
 ---
 
 ## How The System Works
 
-- What features does each `Song` use in your system
+- What features does each `Song` use in your system - 
   The main features used for each song are Mood, Genre, Energy, Tempo, Danceability, an Acousticness
 
-- What information does your `UserProfile` store
+- What information does your `UserProfile` store - 
   The user profile will store the follwoing, mood: chill   genre: lofi   energy: 0.40   tempo: 80 BPM danceability: 0.60   acousticness: 0.80
 
-- How does your `Recommender` compute a score for each song
+- How does your `Recommender` compute a score for each song - 
   The final score is a weighted sum: mood 0.30, genre 0.15, energy 0.20, tempo 0.10, danceability 0.10, acousticness 0.15. This follows a guideline i established: mood outweighs genre, and the energy → tempo and energy → danceability chain which is reflected in the weight ordering.
 
-- How do you choose which songs to recommend
+- How do you choose which songs to recommend - 
   The scoring rule implemented runs on the songs and grades them accordingly then it is soreted and ranked according to the ranking rule logic and keeps the top songs from the list, also filtering out songs already heard.
 
-You can include a simple diagram or bullet list if helpful.
-  Example profile: mood: chill   genre: lofi   energy: 0.40   tempo: 80 BPM danceability: 0.60   acousticness: 0.80
+
+ Example profile: mood: chill   genre: lofi   energy: 0.40   tempo: 80 BPM danceability: 0.60   acousticness: 0.80
   
   Example result
   | Rank | Song | Mood (sim) | Genre (sim) | Energy | Tempo | Danceability | Acousticness | **Score** |
@@ -84,46 +75,32 @@ You can include a simple diagram or bullet list if helpful.
 
 ========================================================================
 ```
-
-
-**Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
-
 ---
 
 ## Experiments You Tried
 
 Use this section to document the experiments you ran. For example:
 
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+- The genre weight was increased from 0.30 to 2.15 to test the algorithm's sensitivity. Sunrise City stayed first in both runs, but Gym Hero rose from third to second because it shares the pop genre, even though its mood (intense) doesn't match the requested happy mood. This shows that a heavy genre weight makes the recommender favor exact genre matches over songs that fit the user's mood and energy better, so the weight needs to be balanced against the other features.
+
+- Valence partly overlaps with mood. Moods like sad, melancholic, and happy already imply a valence level, so a profile that asks for a sad mood and a low valence is partly counting the same thing twice. For those profiles, leaving valence out changes the results very little. It matters more when a profile doesn't specify a mood, or when a mood spans a range of valence values, as intense does (Storm Runner at 0.48 vs. Gym Hero at 0.77).
+
+- For clear, realistic profiles like High-Energy Pop, Chill Lofi, Deep Intense Rock, Rainy Day Folk, Gym EDM, and Sunday Jazz, the system behaved well: the exact-match song came first with a score of 0.96 to 1.0, and partial credit for related moods and genres produced sensible runners-up. Odd or contradictory profiles never crashed it, but they exposed quiet weaknesses: unknown words like "melancholy," "calm," and "k-pop" simply scored zero with no warning, and out-of-range values such as an energy of 1.8 were not validated. When a profile's labels clashed with its audio targets, as in Genre Traitor, the numeric features won because they carry more total weight than mood and genre. The system always returns something even when the best score is only about 0.5, so a low score is the only hint of a poor match, and a small catalog means scores fall off fast after the first result.
 
 ---
 
 ## Limitations and Risks
 
-Summarize some limitations of your recommender.
+- Tiny, invented catalog. There are 20 songs, and many genres and moods have just one, so scores drop off quickly after the first match. The feature values are made up, not measured.
 
-Examples:
+- Silent failure on unknown input. Moods or genres not in the tables, like "melancholy" or "k-pop", score 0 with no warning. Out-of-range values, like energy 1.8, aren't validated.
 
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
-
-You will go deeper on this in your model card.
-
+- Contradictory profiles resolve toward the numbers. Mood and genre carry less total weight than the numeric features, so audio targets can override a stated genre.
 ---
 
 ## Reflection
 
-Read and complete `model_card.md`:
-
-[**Model Card**](model_card.md)
-
-Write 1 to 2 paragraphs here about what you learned:
-
-- about how recommenders turn data into predictions
-- about where bias or unfairness could show up in systems like this
+ The first thing i noticed when attempting this was the potential for bias in the data, for example i weighted mood higher than genre as a personal preference rather than an objective fact. For every kind of algorithm out there that uses mathematical models to make predictions there will be a bias based on what the developers percieve to hold more weight over what can be said to be objective.
 
 
 
