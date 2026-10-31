@@ -53,7 +53,12 @@ The results were mostly sensible, but some surprises showed where the system is 
 
 ```
 ### PROFILE: High-Energy Pop
-
+    "favorite_genre": "pop",
+    "favorite_mood": "happy",
+    "target_energy": 0.90,
+    "pref_tempo": 128,
+    "target_danceable": 0.85,
+    "target_acoustic": 0.15,
 ========================================================================
  TOP 5 RECOMMENDATIONS
 ========================================================================
@@ -106,7 +111,12 @@ The results were mostly sensible, but some surprises showed where the system is 
 ========================================================================
 
 ### PROFILE: Chill Lofi
-
+    "favorite_genre": "lofi",
+    "favorite_mood": "chill",
+    "target_energy": 0.40,
+    "pref_tempo": 80,
+    "target_danceable": 0.60,
+    "target_acoustic": 0.80,
 ========================================================================
  TOP 5 RECOMMENDATIONS
 ========================================================================
@@ -159,7 +169,12 @@ The results were mostly sensible, but some surprises showed where the system is 
 ========================================================================
 
 ### PROFILE: Deep Intense Rock
-
+    "favorite_genre": "rock",
+    "favorite_mood": "intense",
+    "target_energy": 0.92,
+    "pref_tempo": 150,
+    "target_danceable": 0.65,
+    "target_acoustic": 0.08,
 ========================================================================
  TOP 5 RECOMMENDATIONS
 ========================================================================
@@ -212,7 +227,12 @@ The results were mostly sensible, but some surprises showed where the system is 
 ========================================================================
 
 ### PROFILE: Conflicted Sad Raver
-
+    "favorite_genre": "edm",
+    "favorite_mood": "melancholy",
+    "target_energy": 0.95,
+    "pref_tempo": 140,
+    "target_danceable": 0.90,
+    "target_acoustic": 0.95,
 ========================================================================
  TOP 5 RECOMMENDATIONS
 ========================================================================
@@ -265,7 +285,7 @@ The results were mostly sensible, but some surprises showed where the system is 
 ========================================================================
 
 ### PROFILE: Minimal Profile
-
+    "favorite_genre": "rock",
 ========================================================================
  TOP 5 RECOMMENDATIONS
 ========================================================================
@@ -293,7 +313,12 @@ The results were mostly sensible, but some surprises showed where the system is 
 ========================================================================
 
 ### PROFILE: Genre Traitor
-
+    "favorite_genre": "metal",
+    "favorite_mood": "intense",
+    "target_energy": 0.05,
+    "pref_tempo": 50,
+    "target_danceable": 0.10,
+    "target_acoustic": 0.95,
 ========================================================================
  TOP 5 RECOMMENDATIONS
 ========================================================================
