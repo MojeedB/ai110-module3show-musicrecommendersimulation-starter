@@ -17,17 +17,28 @@ Replace this paragraph with your own summary of what your version does.
 
 ## How The System Works
 
-Explain your design in plain language.
-
-Some prompts to answer:
-
 - What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
+  The main features used for each song are Mood, Genre, Energy, Tempo, Danceability, an Acousticness
+
 - What information does your `UserProfile` store
+  The user profile will store the follwoing, mood: chill   genre: lofi   energy: 0.40   tempo: 80 BPM danceability: 0.60   acousticness: 0.80
+
 - How does your `Recommender` compute a score for each song
+  The final score is a weighted sum: mood 0.30, genre 0.15, energy 0.20, tempo 0.10, danceability 0.10, acousticness 0.15. This follows a guideline i established: mood outweighs genre, and the energy → tempo and energy → danceability chain which is reflected in the weight ordering.
+
 - How do you choose which songs to recommend
+  The scoring rule implemented runs on the songs and grades them accordingly then it is soreted and ranked according to the ranking rule logic and keeps the top songs from the list, also filtering out songs already heard.
 
 You can include a simple diagram or bullet list if helpful.
+  Example profile: mood: chill   genre: lofi   energy: 0.40   tempo: 80 BPM danceability: 0.60   acousticness: 0.80
+  
+  Example result
+  | Rank | Song | Mood (sim) | Genre (sim) | Energy | Tempo | Danceability | Acousticness | **Score** |
+  |---|---|---|---|---|---|---|---|---|
+  | 1 | Midnight Coding | chill (1.0) | lofi (1.0) | 0.98 | 0.98 | 0.98 | 0.91 | **0.98** |
+  | 2 | Library Rain | chill (1.0) | lofi (1.0) | 0.95 | 0.91 | 0.98 | 0.94 | **0.97** |
+  | 3 | Focus Flow | focused (0.6) | lofi (1.0) | 1.00 | 1.00 | 1.00 | 0.98 | **0.88** |
+
 
 ---
 
