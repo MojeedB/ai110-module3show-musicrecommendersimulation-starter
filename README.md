@@ -42,53 +42,49 @@ You can include a simple diagram or bullet list if helpful.
 
 ---
 
-## Getting Started
-
-### Setup
-
-1. Create a virtual environment (optional but recommended):
-
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate      # Mac or Linux
-   .venv\Scripts\activate         # Windows
-
-2. Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-3. Run the app:
-
-```bash
-python -m src.main
-```
-
-### Running Tests
-
-Run the starter tests with:
-
-```bash
-pytest
-```
-
-You can add more tests in `tests/test_recommender.py`.
-
----
 
 ## Sample Recommendation Output
 
-Paste a sample of your recommender's output here as a text block so a reader can see what it produces:
+```
+# User profile: user_prefs = {"favorite_genre": "pop", "favorite_mood": "happy", "target_energy": 0.8}
 
+========================================================================
+ TOP 5 RECOMMENDATIONS
+========================================================================
+
+#1  Sunrise City                                          Score: 0.99
+------------------------------------------------------------------------
+  - mood: wanted happy, got happy (similarity 1.00, +0.46)
+  - genre: wanted pop, got pop (similarity 1.00, +0.23)
+  - energy: wanted 0.80, got 0.82 (similarity 0.98, +0.30)
+
+#2  Rooftop Lights                                        Score: 0.92
+------------------------------------------------------------------------
+  - mood: wanted happy, got happy (similarity 1.00, +0.46)
+  - genre: wanted pop, got indie pop (similarity 0.70, +0.16)
+  - energy: wanted 0.80, got 0.76 (similarity 0.96, +0.30)
+
+#3  Fiesta Sunrise                                        Score: 0.71
+------------------------------------------------------------------------
+  - mood: wanted happy, got playful (similarity 0.70, +0.32)
+  - genre: wanted pop, got latin (similarity 0.40, +0.09)
+  - energy: wanted 0.80, got 0.85 (similarity 0.95, +0.29)
+
+#4  Gym Hero                                              Score: 0.64
+------------------------------------------------------------------------
+  - mood: wanted happy, got intense (similarity 0.30, +0.14)
+  - genre: wanted pop, got pop (similarity 1.00, +0.23)
+  - energy: wanted 0.80, got 0.93 (similarity 0.87, +0.27)
+
+#5  Neon Overdrive                                        Score: 0.63
+------------------------------------------------------------------------
+  - mood: wanted happy, got energetic (similarity 0.60, +0.28)
+  - genre: wanted pop, got edm (similarity 0.40, +0.09)
+  - energy: wanted 0.80, got 0.96 (similarity 0.84, +0.26)
+
+========================================================================
 ```
-# e.g.:
-# User profile: genre=indie, mood=chill, energy=low
-# Recommendations:
-#   1. ...
-#   2. ...
-#   3. ...
-```
+
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
 
