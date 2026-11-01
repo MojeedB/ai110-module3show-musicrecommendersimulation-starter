@@ -8,6 +8,8 @@ This recommender is a content-based system that reads a catalog of 20 songs from
 
 ## How The System Works
 
+Streaming platforms like Spotify, YouTube, Netflix and TikTok use a multi-stage pipeline that narrows millions of songs to a ranked  shortlist, learning from implicit behavior like skips, replays, and saves. Collaborative filtering recommends songs based on what similar users enjoyed (great for discovery, but it struggles with new songs or users). Content-based filtering recommends songs whose attributes, like tempo, energy, and mood, match your taste profile (it works on day one, but it tends to stay in a bubble). Real systems blend both.  
+
 - What features does each `Song` use in your system - 
   The main features used for each song are Mood, Genre, Energy, Tempo, Danceability, an Acousticness
 
